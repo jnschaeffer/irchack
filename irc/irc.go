@@ -22,6 +22,9 @@ func (*TeeHandler) parseMessage(msg string) (byte, bool) {
 	case msg == ".":
 		// special case: if the *entire* message is ".", interpret as space
 		return ' ', true
+	case msg == "!":
+		// another special case: if the *entire message is "!", interpret as newline
+		return '\n', true
 	case len(msg) == 2 && msg[0] == '.':
 		return msg[1], true
 	default:
